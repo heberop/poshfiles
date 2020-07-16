@@ -3,4 +3,5 @@ Modules/PSReadLine
 Modules/PackageManagement
 Modules/PowerShellGet
 Modules/psake
+Modules/PSEverything
 bin
