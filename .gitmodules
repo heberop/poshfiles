@@ -1,9 +1,9 @@
 [submodule "Modules/posh-git"]
 	path = Modules/posh-git
 	url = https://github.com/dahlbyk/posh-git.git
-[submodule "Modules/z"]
-	path = Modules/z
-	url = https://github.com/vincpa/z.git
+[submodule "Modules/ZLocation"]
+	path = Modules/ZLocation
+	url = https://github.com/vors/ZLocation.git
 [submodule "Modules/posh-alias"]
 	path = Modules/posh-alias
 	url = https://github.com/giggio/posh-alias
