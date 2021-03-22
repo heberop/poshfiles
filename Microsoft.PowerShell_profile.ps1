@@ -3,6 +3,7 @@ $isWin = [System.Environment]::OSVersion.Platform -eq 'Win32NT'
 if ($isWin -and $null -eq $env:HOME -and $null -ne $env:USERPROFILE) {
     $env:HOME = $env:USERPROFILE
 }
+
 . "$root/InstallModules.ps1"
 . "$root/SetViMode.ps1"
 
@@ -17,8 +18,7 @@ if ($isWin -and (Test-Path "$env:ProgramFiles\Git\usr\bin") -and ($env:path.Inde
 if (!(Get-Process ssh-agent -ErrorAction Ignore)) {
     Start-SshAgent -Quiet
 }
-$ThemeSettings.MyThemesLocation = Join-Path $root PoshThemes
-Set-Theme Mesh
+Set-PoshPrompt -Theme ~/Documents/PowerShell/.poshthemes/ohmyposhv3.omp.json
 if (Get-Command colortool -ErrorAction Ignore) { colortool --quiet campbell.ini }
 
 $kubeConfigHome = Join-Path $env:HOME '.kube'
