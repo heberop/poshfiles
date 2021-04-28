@@ -5,11 +5,12 @@ if ((Get-Module PSReadLine).Version.Major -lt 2) {
     Remove-Module PSReadLine
     Import-Module "$localModulesDirectory/PSReadLine"
 }
-# if (ModuleMissing PSEverything) {
-#     Install-Module PSEverything
-# }
 
-# Import-Module "$localModulesDirectory/posh-git/src/posh-git.psd1" # slow
+if (!(Get-Module -ListAvailable -Name PSEverything)) {
+    Install-Module PSEverything -Scope CurrentUser
+}
+
+Import-Module "$localModulesDirectory/posh-git/src/posh-git.psd1" # slow
 Import-Module "$localModulesDirectory/PowerShellGuard/PowerShellGuard.psm1" #don't import the psd1, it has an incorrect string in the version field
 Import-Module "$localModulesDirectory/DockerCompletion/DockerCompletion/DockerCompletion.psd1"
 
@@ -21,6 +22,6 @@ if ($isWin) {
         Set-PsFzfOption -TabExpansion
     }
     Enable-PsFzfAliases
-    #Import-Module "$localModulesDirectory/git-status-cache-posh-client/GitStatusCachePoshClient.psm1"
-    #if (!(Test-Path "$localModulesDirectory/git-status-cache-posh-client/bin/GitStatusCache.exe")) { Update-GitStatusCache }
+    Import-Module "$localModulesDirectory/git-status-cache-posh-client/GitStatusCachePoshClient.psm1"
+    if (!(Test-Path "$localModulesDirectory/git-status-cache-posh-client/bin/GitStatusCache.exe")) { Update-GitStatusCache }
 }

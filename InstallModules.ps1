@@ -27,11 +27,6 @@ if (!(Test-Path $psakeTabExpansionFile)) {
     Invoke-WebRequest -Uri https://github.com/psake/psake/raw/master/tabexpansion/PsakeTabExpansion.ps1 -OutFile $psakeTabExpansionFile
 }
 
-
-# if (ModuleMissing VSSetup) {
-#     Save-Module VSSetup $localModulesDirectory -Confirm
-# }
-
 if ((Get-Module PSReadLine).Version.Major -lt 2) {
     if (!(Test-Path (Join-Path $localModulesDirectory PSReadLine))) {
         Save-Module PSReadLine $localModulesDirectory -Confirm -AllowPrerelease -Force
