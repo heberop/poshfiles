@@ -31,6 +31,18 @@
             "vertical_offset": 0,
             "segments": [
                 {
+                    "type": "os",
+                    "style": "diamond",
+                    "powerline_symbol": "",
+                    "invert_powerline": false,
+                    "foreground": "#ffffff",
+                    "foreground_templates": null,
+                    "background": "#0077c2",
+                    "background_templates": null,
+                    "leading_diamond": "",
+                    "trailing_diamond": ""
+                },
+                {
                     "type": "shell",
                     "style": "diamond",
                     "powerline_symbol": "",
@@ -39,11 +51,8 @@
                     "foreground_templates": null,
                     "background": "#0077c2",
                     "background_templates": null,
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
-                    "properties": {
-                        "prefix": " ﲵ "
-                    }
+                    "leading_diamond": "",
+                    "trailing_diamond": ""
                 },
                 {
                     "type": "path",

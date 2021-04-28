@@ -18,6 +18,9 @@ if (!(Test-Path $bin/tflint*)) {
     [System.IO.Compression.ZipFile]::ExtractToDirectory($tmpFile, $bin)
     Remove-Item $tmpFile
 }
+if (!(Get-Module -ListAvailable -Name oh-my-posh)) {
+    Install-Module oh-my-posh -Scope CurrentUser
+}
 
 if ($IsWin) {
     if (Get-Command fzf -ErrorAction Ignore) {

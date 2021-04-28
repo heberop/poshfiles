@@ -1,4 +1,4 @@
-# Giovanni Bassi's PowerShell files
+# Heber's PowerShell files
 
 These are my personal poshfiles.
 
@@ -7,17 +7,17 @@ Installation instructions:
 Windows:
 
 ````powershell
-git clone --recursive https://github.com/giggio/poshfiles.git $env:userprofile\Documents\WindowsPowerShell
+git clone --recursive https://github.com/heberop/poshfiles.git $env:userprofile\Documents\PowerShell
 ````
 
 Linux:
 
 ````powershell
-git clone --recursive https://github.com/giggio/poshfiles.git $env:HOME\Documents\WindowsPowerShell
+git clone --recursive https://github.com/heberop/poshfiles.git $env:HOME\Documents\PowerShell
 ````
 
-I have several [aliases](https://github.com/giggio/poshfiles/blob/master/CreateAliases.ps1) configured
-as well as several [modules](https://github.com/giggio/poshfiles/tree/master/Modules).
+I have several [aliases](https://github.com/heberop/poshfiles/blob/master/CreateAliases.ps1) configured
+as well as several [modules](https://github.com/heberop/poshfiles/tree/master/Modules).
 Check them out and see if you want to keep them all.
 
 ## Notes on Vi mode
