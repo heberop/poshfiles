@@ -1,27 +1,21 @@
 $root = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-$localModulesDirectory = Join-Path $root Modules
 
-if ((Get-Module PSReadLine).Version.Major -lt 2) {
-    Remove-Module PSReadLine
-    Import-Module "$localModulesDirectory/PSReadLine"
-}
-
-if (!(Get-Module -ListAvailable -Name PSEverything)) {
-    Install-Module PSEverything -Scope CurrentUser
-}
-
-Import-Module "$localModulesDirectory/posh-git/src/posh-git.psd1" # slow
-Import-Module "$localModulesDirectory/PowerShellGuard/PowerShellGuard.psm1" #don't import the psd1, it has an incorrect string in the version field
-Import-Module "$localModulesDirectory/DockerCompletion/DockerCompletion/DockerCompletion.psd1"
+Import-Module PSReadLine
+Import-Module DockerCompletion
 
 if ($isWin) {
-    Import-Module "$localModulesDirectory/PSFzf/PSFzf.psd1" -ArgumentList 'Ctrl+t', 'Ctrl+r' -Force
-    if ($env:WT_SESSION) {
-        Set-PsFzfOption -TabExpansion -GitKeyBindings
-    } else {
-        Set-PsFzfOption -TabExpansion
+    if ((Get-Command fzf*.exe)) {
+        Import-Module PSFzf
+        # replace 'Ctrl+t' and 'Ctrl+r' with your preferred bindings:
+        Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -EnableAliasFuzzyZLocation
+        if ($env:WT_SESSION) {
+            Set-PsFzfOption -TabExpansion -GitKeyBindings
+        } else {
+            Set-PsFzfOption -TabExpansion
+        }
+        Enable-PsFzfAliases
     }
-    Enable-PsFzfAliases
-    Import-Module "$localModulesDirectory/git-status-cache-posh-client/GitStatusCachePoshClient.psm1"
-    if (!(Test-Path "$localModulesDirectory/git-status-cache-posh-client/bin/GitStatusCache.exe")) { Update-GitStatusCache }
 }
+
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+Import-Module ZLocation

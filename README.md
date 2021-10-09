@@ -6,6 +6,14 @@ These are my personal poshfiles. I have several [aliases](https://github.com/heb
 as well as several [modules](https://github.com/heberop/poshfiles/tree/main/Modules).
 Check them out and see if you want to keep them all.
 
+## Prerequisites
+
+- fzf
+
+```
+./InstallModules.ps1
+``` 
+
 ## Installation
 
 Windows:

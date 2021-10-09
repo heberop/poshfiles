@@ -1,5 +1,3 @@
-Set-Alias pester invoke-pester
-Set-Alias psake invoke-psake
 Set-Alias k kubectl
 function add {
     if ($args) {
@@ -24,6 +22,12 @@ Add-Alias tag 'git tag'
 Add-Alias up 'git up'
 Add-Alias sync 'git sync'
 Set-Alias l 'ls'
+Add-Alias run 'dotnet run'
+Add-Alias build 'dotnet build'
+Add-Alias test 'dotnet test'
+Add-Alias vim 'nvim'
+Add-Alias profile 'code $env:userprofile/Documents/Powershell'
+
 if ($lsApp = Get-Command ls -CommandType Application -ErrorAction Ignore) {
     Add-Alias ll "$($lsApp.Source) -la"
 } else {

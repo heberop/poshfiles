@@ -1,8 +1,2 @@
-Modules/VSSetup
-Modules/PSReadLine
-Modules/PackageManagement
-Modules/PowerShellGet
-Modules/psake
-Modules/PSEverything
-Modules/oh-my-posh
+Modules/
 bin

@@ -24,3 +24,14 @@ function Remove-FromPath {
     }
     $env:path = ($env:path.Split(';') | Where-Object { $_ -ne $pathToRemove }) -join ';'
 }
+
+function Install-ChocoPackage {
+    Param( [parameter(Mandatory = $true)][String]$packageName)
+    if (!(Get-Command "$packageName*")) {
+        if (!$isAdmin) {
+            Write-Warning -Message "To install $packageName, open the terminal as administrator."
+        } else {
+            choco install $packageName -y
+        }
+    }
+}
