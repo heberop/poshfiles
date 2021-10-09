@@ -18,7 +18,7 @@ if ($isWin -and (Test-Path "$env:ProgramFiles\Git\usr\bin") -and ($env:path.Inde
 if (!(Get-Process ssh-agent -ErrorAction Ignore)) {
     Start-SshAgent -Quiet
 }
-Set-PoshPrompt -Theme ~/Documents/PowerShell/.poshthemes/ohmyposhv3.omp.json
+Set-PoshPrompt -Theme $root/.poshthemes/ohmyposhv3.omp.json
 if (Get-Command colortool -ErrorAction Ignore) { colortool --quiet campbell.ini }
 
 $kubeConfigHome = Join-Path $env:HOME '.kube'

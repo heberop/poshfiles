@@ -40,7 +40,12 @@
                     "background": "#0077c2",
                     "background_templates": null,
                     "leading_diamond": "",
-                    "trailing_diamond": ""
+                    "trailing_diamond": "",
+                    "properties": {
+                        "postfix": " ",
+                        "wsl": "",
+                        "wsl_separator": ""
+                    }
                 },
                 {
                     "type": "shell",
