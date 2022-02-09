@@ -43,4 +43,6 @@ if ($isWin) {
     . "$root/CreateAliases.windows.ps1"
 }
 
+Import-Module -Name Terminal-Icons
+
 $root = $null
