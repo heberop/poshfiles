@@ -3,6 +3,27 @@
     "powershell.codeFormatting.preset": "OTBS",
     "files.exclude": {
         "bin/**": true,
-        "Modules/**": true
-    }
+        "Modules/**": false
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#b46a36",
+        "activityBar.background": "#b46a36",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#53cc85",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#b46a36",
+        "statusBar.background": "#8d532a",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#b46a36",
+        "statusBarItem.remoteBackground": "#8d532a",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "tab.activeBorder": "#b46a36",
+        "titleBar.activeBackground": "#8d532a",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#8d532a99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#8d532a"
 }

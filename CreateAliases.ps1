@@ -1,5 +1,3 @@
-Set-Alias pester invoke-pester
-Set-Alias psake invoke-psake
 Set-Alias k kubectl
 function add {
     if ($args) {

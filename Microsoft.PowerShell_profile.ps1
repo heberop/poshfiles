@@ -1,48 +1,31 @@
 $root = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-$isWin = [System.Environment]::OSVersion.Platform -eq 'Win32NT'
-if ($isWin -and $null -eq $env:HOME -and $null -ne $env:USERPROFILE) {
-    $env:HOME = $env:USERPROFILE
-}
-
-. "$root/InstallModules.ps1"
-. "$root/SetViMode.ps1"
-
-if ($isWin -and (Test-Path "$env:ProgramFiles\Git\usr\bin") -and ($env:path.IndexOf("$($env:ProgramFiles)\Git\usr\bin", [StringComparison]::CurrentCultureIgnoreCase) -lt 0)) {
-    # enable ssh-agent from posh-git
-    $env:PATH = "$env:PATH;$env:ProgramFiles\Git\usr\bin"
-}
-
-. "$root/InstallTools.ps1"
-. "$root/ImportModules.ps1"
 
 if (!(Get-Process ssh-agent -ErrorAction Ignore)) {
     Start-SshAgent -Quiet
 }
-Set-PoshPrompt -Theme $root/.poshthemes/ohmyposhv3.omp.json
-if (Get-Command colortool -ErrorAction Ignore) { colortool --quiet campbell.ini }
 
-$kubeConfigHome = Join-Path $env:HOME '.kube'
-if (Test-Path $kubeConfigHome) {
-    $env:KUBECONFIG = Get-ChildItem $kubeConfigHome -File | ForEach-Object { $kubeConfig = '' } { $kubeConfig += "$($_.FullName)$([System.IO.Path]::PathSeparator)" } { $kubeConfig }
-    Remove-Variable kubeConfig
+. "$root/MeasureTime.ps1"
+. "$root/InstallModules.ps1"
+. "$root/ImportModules.ps1"
+
+if (Get-Command dotnet -ErrorAction Ignore) {
+    Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+        param($commandName, $wordToComplete, $cursorPosition)
+        dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+    }
 }
-Remove-Variable kubeConfigHome
 
-if ((Get-Command bat -CommandType Application -ErrorAction Ignore) -and (Get-Command less -CommandType Application -ErrorAction Ignore)) {
-    $env:BAT_PAGER = "less -RF"
-}
-
-$env:DOCKER_BUILDKIT = 1
-
-. "$root/Completions.ps1"
 . "$root/CreateAliases.ps1"
 . "$root/Functions.ps1"
+# . "$root/Completions.ps1"
+# . "$root/AddLogHistory.ps1"
 
 if ($isWin) {
-    . "$root/profile.windows.ps1"
     . "$root/CreateAliases.windows.ps1"
 }
 
-Import-Module -Name Terminal-Icons
+oh-my-posh init pwsh --config "$root/.poshthemes/ohmyposhv3.omp.json" | Invoke-Expression
 
 $root = $null
