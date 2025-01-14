@@ -6,6 +6,8 @@ if ($isWin -and $null -eq $env:HOME -and $null -ne $env:USERPROFILE) {
     $env:HOME = $env:USERPROFILE
 }
 
+oh-my-posh init pwsh --config "C:\Program Files (x86)\oh-my-posh\themes\negligible.omp.json" | Invoke-Expression
+
 . "$root/Functions.ps1"
 . "$root/MeasureTime.ps1"
 . "$root/InstallModules.ps1"
@@ -27,8 +29,6 @@ if (Get-Command dotnet -ErrorAction Ignore) {
 if ($isWin) {
     . "$root/CreateAliases.windows.ps1"
 }
-
-oh-my-posh init pwsh --config "C:\Program Files (x86)\oh-my-posh\themes\negligible.omp.json" | Invoke-Expression
 
 $root = $null
 
