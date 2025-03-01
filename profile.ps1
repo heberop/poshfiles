@@ -23,7 +23,7 @@ if (Get-Command dotnet -ErrorAction Ignore) {
 }
 
 . "$root/CreateAliases.ps1"
-# . "$root/Completions.ps1"
+. "$root/Completions.ps1"
 # . "$root/AddLogHistory.ps1"
 
 if ($isWin) {

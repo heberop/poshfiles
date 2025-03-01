@@ -1,4 +1,3 @@
-Set-Alias k kubectl
 function add {
     if ($args) {
         Invoke-Expression ( "git add " + ($args -join ' ') )
@@ -27,6 +26,7 @@ Add-Alias build 'dotnet build'
 Add-Alias test 'dotnet test'
 Add-Alias vim 'nvim'
 Add-Alias profile 'code $env:userprofile/Documents/Powershell'
+Add-Alias act '.\venv\Scripts\activate'
 
 if ($lsApp = Get-Command ls -CommandType Application -ErrorAction Ignore) {
     Add-Alias ll "$($lsApp.Source) -la"
