@@ -19,4 +19,3 @@ if ($isWin) {
 
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 Import-Module ZLocation
-Import-Module New-TalosVM
